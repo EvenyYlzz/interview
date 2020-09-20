@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fn1() {
+            console.log(this)
+        }
+
+        fn1()
+
+        fn1.call(  { x:100 }  ) // call直接就改变指向执行
+
+        const fn2 = fn1.bind(  { x:200 }  ) // 返回一个新的函数执行，所以需要赋值
+        fn2()
+    </script>
+</body>
+</html>

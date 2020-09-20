@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const zhangsan = {
+            name: '张三',
+            sayHi() {
+                // this 即当前对象
+                console.log(this)
+            },
+            wait() {
+                setTimeout(
+                    function() {
+                        console.log(this)
+                        // this === window
+                        // 本身触发的函数，不是通过对象触发的函数，可以当作这个函数在外部，所以this指向window
+                    }
+                )
+            }
+        }
+        zhangsan.sayHi()
+        zhangsan.wait()
+    </script>
+</body>
+</html>

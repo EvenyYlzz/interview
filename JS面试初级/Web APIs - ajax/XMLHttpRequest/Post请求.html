@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        const xhr = new XMLHttpRequest()
+        
+        xhr.open( 'POST' , './login' , true ) // true 异步
+        
+        xhr.onreadystatechange = function () {
+            if ( xhr.readyState === 4 ){
+                if ( xhr.status === 200 ){
+                    alert(xhr.responseText)
+                } else {
+                    console.log('其他情况')
+                }
+            }
+        }
+        
+        const postData = {
+            userName: 'zhangsan',
+            password: 'xxx'
+        }
+        xhr.send(JSON.stringify(postData))
+
+    </script>
+</body>
+</html>

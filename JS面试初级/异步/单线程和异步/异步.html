@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 异步 
+        //settimeout通过回调函数，等待几秒再回调该函数，会先把后面代码执行完成
+        console.log(100)
+        setTimeout( () => {
+            console.log(200)
+        } , 1000 )
+        console.log(300)
+    </script>
+</body>
+</html>

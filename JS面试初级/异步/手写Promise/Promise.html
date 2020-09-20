@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        function loadImg(src) {
+            const p = new Promise(
+                ( resolve , reject ) => {
+                    const img = document.createElement('img')
+                    img.onload = () => {
+                        resolve(img)
+                    }
+                    img.onerror = () => {
+                        reject(new Error(`图片加载失败${src}`))
+                    }
+                    img.src = src
+                }
+            )
+            return p
+        }
+
+        const url = 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1906469856,4113625838&fm=26&gp=0.jpg'
+
+        loadImg(url).then( img => {
+            console.log(img.width)
+            return img
+        } ).then( img => {
+            console.log(img.height)
+        } ).catch( ex => console.error(ex) )
+
+    </script>
+</body>
+</html>

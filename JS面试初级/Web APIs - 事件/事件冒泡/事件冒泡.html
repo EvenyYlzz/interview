@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="div1">
+        <p id="p1">激活</p>
+        <p id="p2">取消</p>
+        <p id="p3">取消</p>
+        <p id="p4">取消</p>
+    </div>
+
+    <div id="div2">
+        <p id="p5">取消</p>
+        <p id="p6">取消</p>
+    </div>
+
+
+    <script>
+
+        const p1 = document.getElementById('p1')
+        const body = document.body
+
+
+        bindEvent( p1 , 'click' , e => {
+            // e.stopPropagation()
+            // 注释该行，体会事件冒泡，阻止冒泡
+            alert('激活')
+        } )
+
+        bindEvent( body , 'click' , e => {
+            alert('body取消')
+        } )
+
+        function bindEvent( elem , type , fn ){
+            elem.addEventListener( type , fn )
+        }
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        setTimeout( function () {
+            console.log(2)
+        } , 0 )
+
+        new Promise( function (resolve) {
+            console.log(3)
+            resolve()
+            console.log(4)
+        } ).then( function () {
+            console.log(5)
+        } )
+
+        console.log(8)
+
+        // new一个对象是瞬发的，可以马上执行，只是promise.then是异步的，所以先348，然后又因为promise.then的优先级大于setTimeout，所以是52
+
+        //  3  4  8  5  2
+
+    </script>
+</body>
+</html>

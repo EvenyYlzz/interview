@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const zhangsan = {
+            name: '张三',
+            sayHi() {
+                // this 即当前对象
+                console.log(this)
+            },
+            wait() {
+                setTimeout(
+                    ()  =>  {
+                        console.log(this)
+                        // this 即当前对象
+                        // 箭头函数取值取其上级作用域的值
+                    }
+                )
+            }
+        }
+        zhangsan.sayHi()
+        zhangsan.wait()
+    </script>
+</body>
+</html>

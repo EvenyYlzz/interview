@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 父类
+        class People {
+            constructor(name,number){
+                this.name = name
+            }
+            eat() {
+                console.log(
+                    `姓名:${this.name}吃了一些东西`
+                )
+            }
+        }
+
+        // 子类
+        class Student extends People {
+            constructor(name,number){
+                super(name)  //父类处理
+                this.number = number
+            }
+
+            seyHi() {
+                console.log(
+                    `姓名:${this.name} , 学号:${this.number}`
+                )
+            }
+        }
+
+        // 子类
+        class Teacher extends People {
+            constructor(name,major){
+                super(name)  //父类处理
+                this.major = major
+            }
+
+            teach() {
+                console.log(
+                    `姓名:${this.name} , 教学科目:${this.major}`
+                )
+            }
+        }
+
+        // 通过类 new 一个实例/对象
+        const stu1 = new Student('夏洛','100')
+        const stu2 = new Teacher('马冬梅','英语')
+        stu1.eat()
+        stu1.seyHi()  // 父类子类的方法都能用，继承了
+        stu2.eat()
+        stu2.teach()
+
+
+        console.log('---------------------------------')
+        //注意  instanceof 的判断
+        console.log( stu1 instanceof Student )
+        console.log( stu1 instanceof People )
+        console.log( stu1 instanceof Object )
+        
+
+        console.log('---------------------------------')
+        // class 实际上是函数 ，可见是语法糖
+        // class 通过function实现的，但是写法是class的写法
+        console.log( typeof People )
+        console.log( typeof Student )
+
+
+        console.log('---------------------------------')
+        // console.log()
+        // 原型
+        console.log( stu1.__proto__ )
+        console.log( Student.prototype )
+        console.log( stu1.__proto__ === Student.prototype )
+
+
+        console.log('---------------------------------')
+        // 原型链
+        console.log( Student.prototype.__proto__ )
+        console.log( People.prototype )
+        console.log( People.prototype === Student.prototype.__proto__ )
+
+        console.log('---------------------------------')
+
+        console.log( stu1.hasOwnProperty('name') ) 
+        console.log( stu1.hasOwnProperty('number') )
+        console.log( stu1.hasOwnProperty('sayHi') ) // 非自己属性
+        console.log( stu1.hasOwnProperty('eat') ) // 非自己属性
+    </script>
+</body>
+</html>

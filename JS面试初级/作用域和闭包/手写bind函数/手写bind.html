@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 模拟bind
+        Function.prototype.bind1 = function() {
+            // 将参数拆解为数组
+            const args = Array.prototype.slice.call(arguments)
+
+            // 获取 this （数组第一项）
+            const t = args.shift()
+
+            // fn1.bind(...) 中的 fn1
+            const self = this
+
+            return function() {
+                return self.apply(t,args)
+            }
+        }
+    </script>
+</body>
+</html>

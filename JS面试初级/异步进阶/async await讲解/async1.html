@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function loadImg(src) {
+            const p = new Promise(
+                ( resolve , reject ) => {
+                    const img = document.createElement('img')
+                    img.onload = () => {
+                        resolve(img)
+                    }
+                    img.onerror = () => {
+                        const err = new Error(`图片加载失败${src}`)
+                        reject(err)
+                    }
+                    img.src = src
+                }
+            )
+            return p
+        }
+
+        const src1 = 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1906469856,4113625838&fm=26&gp=0.jpg'
+
+        const src2 = 'https://uploadfiles.nowcoder.com/images/20200604/4107856_1591259869782_1925ADECEC44609BC61F11983E2C623B'
+
+    !(async function () {
+        // 同步的写法
+
+        
+
+        const img1 = await loadImg(src1)
+        console.log(img1.width , img1.height)
+
+        const img2 = await loadImg(src2)
+        console.log(img2.width , img2.height)
+    } )()
+    </script>
+</body>
+</html>

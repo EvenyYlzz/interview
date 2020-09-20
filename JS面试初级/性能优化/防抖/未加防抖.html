@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        <input type="text" id="input1">
+    </div>
+
+    <script>
+        
+        const input1 = document.getElementById('input1')
+
+        input1.addEventListener( 'keyup' , function () {
+            console.log(input1.value)
+        } )
+
+        // 查看控制台能看到频繁触发
+    </script>
+</body>
+</html>

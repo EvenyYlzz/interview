@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        (async function () {
+
+            console.log('start')
+            
+            const a = await 100
+            console.log('a:',a)
+
+            const b = await Promise.resolve(200)
+            console.log('b:',b)
+
+            const c = await Promise.reject(300)
+            console.log('c:',c)
+
+            console.log('end')
+            
+        })()
+
+        // start
+        // a 100
+        // b 200
+        // 报错
+    </script>
+</body>
+</html>

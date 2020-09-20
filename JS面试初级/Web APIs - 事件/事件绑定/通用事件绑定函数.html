@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function bindEvent( elem , type , selector , fn ){
+            if( fn == null ){
+                fn = selector
+                selector = null 
+            }
+            elem.addEventListenrt( type , e => {
+                let target = e.target
+                if( selector ){  // 需要代理
+                    if( target.matches(selector) ){
+                        fn.call( target , e )
+                    }
+                } else {
+                    fn(e)  // 不需要代理
+                }
+            } )
+        }
+    </script>
+</body>
+</html>

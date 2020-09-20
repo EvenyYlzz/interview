@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        window.callback = function (data) {
+            console.log(data)
+        }
+
+        // 得先把 jsonp 通过http-server挂在server端
+        // 然后查看跨域效果
+
+
+        // jq的ajax实现jsonp
+        // $.ajax({
+        //     url: 'http://localhost:8080/jsonp.js' ,
+        //     dataType: 'jsonp' ,
+        //     jsonpCallback: 'callback' ,
+        //     success: function (data) {
+        //         console.log(data)
+        //     }
+        // })
+    </script>
+    <script src="http://localhost:8080/jsonp.js"></script>
+
+</body>
+</html>

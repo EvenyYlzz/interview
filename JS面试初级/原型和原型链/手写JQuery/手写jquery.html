@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    class JQuery {
+        constructor (selector) {
+            const result = document.querySelectorAll(selector)
+            const length = result.length
+            for( let i = 0 ; i<length ; i++ ){
+                this[i] = result[i]
+            }
+            this.length = length
+        }
+        get ( index ) {
+            return this[index]
+        }
+        each (fn) {
+            for ( let i = 0 ; i<this.length ; i++ ){
+                const elem = this[i]
+                fn(elem)
+            }
+        }
+        on ( type, fn ) {
+            return this.each( elem => {
+                elem.addEvenListener( type, fn , false )
+            } )
+        }
+        // 可拓展很多 DOM API
+    }
+    </script>
+</body>
+</html>

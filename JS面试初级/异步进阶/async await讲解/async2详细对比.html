@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        async function fn1() {
+            return 100
+        }
+
+        const res1 = fn1()
+        console.log('res1:',res1)
+        //执行 async 函数，返回的是一个Promise 对象
+
+
+        res1.then( data => {
+            console.log('data',data) // 100
+        } )
+
+
+
+
+
+        !(async function () {
+            const p1 = Promise.resolve(300)
+            const data1 = await p1 //await 相当于 Promise then
+            // 300
+            console.log('data1',data1)
+        })()
+        // 上面可以用then获取data，那么因为await相当于then，所以也能获取到data
+
+
+
+        !(async function () {
+            
+            const data2 = await 400 //await 自动封装成Promise.resolve(400)
+            // 400
+            console.log('data2',data2)
+        })()
+
+
+
+
+        !(async function () {
+            
+            const data3 = await fn1() //await 相当于then了fn1返回的数字的封装
+            // 400
+            console.log('data3',data3)
+        })()
+
+
+
+        !(async function () {
+            const p4 = Promise.reject('err1')
+            // rejected 状态
+            try {
+                const res = await p4
+                console.log(res)
+            } catch (ex) {
+                console.error(ex)
+            }
+            // try catch 相当于promise catch
+        })()
+
+
+
+        !(async function () {
+            const p4 = Promise.reject('err1')
+            const res = await p4 // 上面是rejected 状态 无法走通，因为这里相当于then
+            console.log('res',res)
+        })()
+    </script>
+</body>
+</html>

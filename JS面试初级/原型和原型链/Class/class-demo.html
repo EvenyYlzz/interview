@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Student {
+            constructor(name,number){
+                this.name = name
+                this.number = number
+                
+            }
+            seyHi() {
+                console.log(
+                    `姓名:${this.name} , 学号:${this.number}`
+                )
+            }
+        }
+
+        // 通过类 new 一个实例/对象
+        const stu1 = new Student('夏洛','100')
+        stu1.seyHi()
+    </script>
+</body>
+</html>

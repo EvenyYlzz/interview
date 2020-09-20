@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function muti (num) {
+            return new Promise( resolve => {
+                setTimeout( () => {
+                    resolve( num * num )  
+                }, 1000);
+            })
+        }
+
+        var nums = [1,2,3]
+        nums.forEach( async (i) => {
+            const res = await muti(i)
+            console.log(res)
+        }); // 149同时打印
+        // 同一时间创建3个异步
+
+        !(async function () {
+            for( let i of nums ){
+                const res = await muti(i)
+                console.log(res)
+            }
+        })()  // 149一个接着一个打印
+        // 每次只创建一个异步，有了结果才创建下一轮的异步
+    </script>
+</body>
+</html>

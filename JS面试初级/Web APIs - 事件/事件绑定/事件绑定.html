@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        <button id="btn1">一个按钮</button>
+    </div>
+
+    <script>
+
+        function bindEvent( elem , type , fn ){
+            elem.addEventListener( type , fn )
+        }
+
+        const btn1 = document.getElementById('btn1')
+
+        bindEvent( btn1 , 'click' , e => {
+            e.preventDefault()
+            alert('clicked')
+        } )
+
+    </script>
+</body>
+</html>

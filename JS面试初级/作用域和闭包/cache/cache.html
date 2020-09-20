@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 闭包隐藏数据 只提供 API
+
+        function creatCache() {
+            const data = {} // 闭包中的数据，被隐藏，不被外界访问
+            return {
+                set ( key,val ) {
+                    data[key] = val
+                },
+                get ( key ) {
+                    return data[key]
+                }
+            }
+        }
+
+        const c = creatCache()
+        c.set( 'a' , 100 )
+        console.log( c.get('a') )
+    </script>
+</body>
+</html>
