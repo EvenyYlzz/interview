@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//  创建10个列表
+const list = document.getElementById('list')
+for(let i = 0 ; i<10 ; i++){
+    const li = document.createElement('li')
+    li.innerHTML = `List item ${i}`
+    list.appendChild(li)
+}
+//  每执行一次，即插入一次，总共进行了10次DOM插入操作
+
+
+const listName = document.getElementById('list')
+//  创建一个文档片段，此时还没有插入到DOM树中
+const frag = document.createDocumentFragment()
+for(let j = 0 ; j<10 ; j++){
+    const li = document.createElement('li')
+    li.innerHTML = "list item" + j
+    frag.appendChild(li)
+}
+//  将添加的10个列表都创建完成后，再一起插入到DOM树中
+listName.appendChild(frag)
+    </script>
+</body>
+</html>
