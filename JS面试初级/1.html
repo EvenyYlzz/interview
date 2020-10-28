@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+const func = (function () {
+    // TODO 请实现对应代码逻辑，每调用一次返回值都会加1
+    let i = 0
+    return function() {
+        i++
+        return i
+    }
+
+})();
+
+
+console.log(func()); // -> 1
+console.log(func()); // -> 2
+console.log(func()); // -> 3 
+
+    </script>
+</body>
+</html>
