@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+function myNew (fun, ...args) {
+  let obj = {};
+  obj.__proto__ = fun.prototype;
+  let res = fun.apply(obj, args);
+  console.log('obj',obj)
+  console.log('res',res)
+  console.log(res instanceof Object)
+  return res instanceof Object ? res : obj;
+}
+
+function Animal(name) {
+  this.name = name;
+}
+
+function person(name){
+    return {
+        name: '小明'
+    }
+}
+
+let animal = myNew(Animal, 'dog');
+console.log(animal.name)  // dog
+
+console.log('-------------------------------')
+
+let Person = myNew(person);
+console.log(Person.name)
+
+</script>
+</body>
+</html>
