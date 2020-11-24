@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="downloadExl(people)">导出</button>
+    </div>
+</body>
+<script src="//unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+<script src="http://cdn.staticfile.org/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+<!-- <script src='./csv.min.js'></script> -->
+<script>
+
+
+        // 准备导出数据
+        var people = [{
+            "classname": "11-22",
+            "coursetype": "写作",
+            "terchername": "桃子老师",
+            "level": "写作level1",
+            "detail": "35/36",
+            "kuopercent": "97.22%",
+            "xupercent": "11.11%",
+            "续费细节": "4/36",
+        }, {
+            "classname": "11-22",
+            "coursetype": "写作",
+            "terchername": "桃子老师",
+            "level": "写作level3",
+            "detail": "30/36",
+            "kuopercent": "83.33%",
+            "xupercent": "8.33%",
+            "续费细节": "3/36",
+        }, {
+            "classname": "11-22",
+            "coursetype": "写作",
+            "terchername": "桃子老师",
+            "level": "写作level5",
+            "detail": "12/36",
+            "kuopercent": "33.33%",
+            "xupercent": "",
+            "续费细节": "",
+        },{
+            "classname": "11-22",
+            "coursetype": "写作",
+            "terchername": "桃子老师",
+            "level": "",
+            "detail": "",
+            "kuopercent": "",
+            "xupercent": "",
+            "续费细节": "",
+        }];
+        const wopts = {
+            bookType: 'xlsx',
+            bookSST: false,
+            type: 'binary'
+        };
+        //这里的数据是用来定义导出的格式类型
+        // const wopts = { bookType: 'csv', bookSST: false, type: 'binary' };//ods格式
+        // const wopts = { bookType: 'ods', bookSST: false, type: 'binary' };//ods格式
+        // const wopts = { bookType: 'xlsb', bookSST: false, type: 'binary' };//xlsb格式
+        // const wopts = { bookType: 'fods', bookSST: false, type: 'binary' };//fods格式
+        // const wopts = { bookType: 'biff2', bookSST: false, type: 'binary' };//xls格式
+
+        function downloadExl(data, type) {
+            const wb = {
+                SheetNames: ['Sheet1'],
+                Sheets: {}
+            };
+            //通过json_to_sheet转成单页(Sheet)数据
+            var data = XLSX.utils.json_to_sheet(data); 
+            const merge = [
+                {   s: { r: 1, c: 0 }, 
+                    e: { r: 4, c: 0 }   },
+
+                {   s: { r: 1, c: 1 }, 
+                    e: { r: 4, c: 1 }   },
+
+                {   s: { r: 1, c: 2 }, 
+                    e: { r: 4, c: 2 }   },
+            ]
+            data["!merges"] = merge
+            
+            console.log(data);
+            // 替换表头
+            ["班级名称", "课程类型", "班主任称呼", "扩课课程", "扩课细节","扩课率","续费率","续费细节"].forEach((v, i) => {
+                data[getCharCol(i) + 1] = {
+                    t: "s",
+                    v: v
+                };
+            })
+            wb.Sheets['Sheet1'] = data;
+            saveAs(new Blob([s2ab(XLSX.write(wb, wopts))], {
+                type: "application/octet-stream"
+            }), "测试Excel文件导出" + '.' + (wopts.bookType == "biff2" ? "xls" : wopts.bookType));
+        }
+
+        function s2ab(s) {
+            if (typeof ArrayBuffer !== 'undefined') {
+                var buf = new ArrayBuffer(s.length);
+                var view = new Uint8Array(buf);
+                for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+                return buf;
+            } else {
+                var buf = new Array(s.length);
+                for (var i = 0; i != s.length; ++i) buf[i] = s.charCodeAt(i) & 0xFF;
+                return buf;
+            }
+        }
+
+        function getCharCol(n) {
+            var temCol = '',
+                s = '',
+                m = 0
+            while (n >= 0) {
+                m = n % 26 + 1
+                s = String.fromCharCode(m + 64) + s
+                n = (n - m) / 26
+            }
+            console.log(s)
+            return s
+        };
+    
+</script>
+
+</html>
