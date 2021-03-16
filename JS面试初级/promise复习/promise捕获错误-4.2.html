@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+console.log('开始执行')
+new Promise((resolve,reject) => {
+    setTimeout(() => {
+        console.log('发送：错误')
+        reject('错误')
+    },1000)
+})
+.then(val => {
+    console.log('在then第【一】个函数里面：' + val)
+},err => {
+    console.log('在then第【二】个函数里面：' + err)
+})
+
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+//  多次回调，仍然可以按照顺序的管道进行执行，这也是体现Promise的强大所在
+
+console.log('开始执行')
+new Promise(resolve => {
+    setTimeout(() => {
+        console.log('1')
+        resolve('1')
+    },500)
+})
+.then(val => {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            console.log(val + '2')
+            resolve(val + '2')
+        },500)
+    })
+})
+.then(val => {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            console.log(val + '3')
+            resolve(val + '3')
+        },500)
+    })
+})
+.then(val => {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            console.log(val + '4')
+            resolve(val + '4')
+        },500)
+    })
+})
+
+</script>
+</body>
+</html>

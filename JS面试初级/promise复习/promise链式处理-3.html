@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+console.log('开始执行')
+
+let promise = new Promise(resolve => {
+    setTimeout(() => {
+        console.log('1')
+        resolve('1')
+    },1000)
+})
+
+setTimeout(() => {
+    promise.then(val => {
+        console.log('在已经完成的实例中获取val：'+val)
+    },3000)
+})
+
+// Promise队列重要特性所在
+// - 在任何一个地方生成了一个promise队列之后，可以将其作为一个变量传递到其他地方，并且可以在这个变量之后追加任意的`then`形成一个队列操作，表示下一步要进行的操作。不管前面的promise状态是完成了还是未完成，队列都会按照固定的顺序去执行。如果前面promise状态没完成，后续队列会继续完成，如果前面队列已经完成了，也可以获得前面完成状态所获取的值
+
+</script>
+</body>
+</html>

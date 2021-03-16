@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+console.log('开始执行')
+Promise.all([1,2,3])
+.then(all => {
+    console.log('第一个then：',all)
+    return Promise.all(
+        [
+            function(){
+                console.log('ooxx')
+            },
+            'xxoo',
+            false
+        ]
+    )
+})
+.then(all => {
+    console.log('第二个then：',all)
+
+    let p1 = new Promise(resolve => {
+        setTimeout(() => {
+            resolve('我是P1')
+        },1500)
+    })
+
+    let p2 = new Promise(resolve => {
+        // setTimeout(() => {
+        //     resolve('我是P2')
+        // },1200)
+        resolve('我是P2')
+    })
+
+    return Promise.all([p1,p2,'xxxooo'])
+    //  不是Promise的值也会一起放入完成结果当中
+})
+.then(all => {
+    console.log('第三个then：',all)
+
+    let p1 = new Promise(resolve => {
+        setTimeout(() => {
+            resolve('我是P3')
+        },1500)
+    })
+
+    let p2 = new Promise((resolve,reject) => {
+        setTimeout(() => {
+            reject('我是P4')
+        },1000)
+    })
+
+    let p3 = new Promise((resolve,reject) => {
+        setTimeout(() => {
+            reject('我是P5')
+        },3000)
+    })
+
+    return Promise.all([p1,p2,p3])
+})
+.then(all => {
+    console.log('all:',all)
+})
+.catch(err => {
+    console.log('err:',err)
+})
+
+</script>
+</body>
+</html>
