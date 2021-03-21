@@ -1,36 +1,8 @@
-# vue-interview
-
-#### Description
+# interview
 前端面试题目练习demo
+#### Description
+从准备面试以来，所做过的一些面试题整理出来。算是比较全的，值得收藏一看哦。如果发现有什么错误，记得向我反馈哦
 
-#### Software Architecture
-Software architecture description
+#### 知识框架图
+- <img src="./JS面试初级/前端面试课-思维导图.png"></img>
 
-#### Installation
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### Instructions
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### Contribution
-
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
-
-
-#### Gitee Feature
-
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
